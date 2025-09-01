@@ -1,0 +1,664 @@
+/* CSS Değişkenleri - Renk Paleti ve Fontlar */ 
+/* CSS Değişkenleri */
+
+html, body {
+    overflow-x: hidden;
+  }
+  
+
+@font-face {
+    font-family: 'Marble';
+    src: url('fonts/TTF/marble-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --dark-main: #0a0a0a;
+    --dark-alt: #171717;
+    --primary-color:#f9d854;
+    --text-light: #ededed;
+    --text-muted: rgba(237, 237, 237, 0.6);
+    --font-heading: 'Marble', serif;
+    --font-body: 'Marble', serif; /* Artık p etiketleri de Marble fontunu kullanacak */
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--dark-main);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+}
+
+/* P etiketleri için özel font stili (okunabilirliği artırmak için) */
+p {
+    font-family: var(--font-body);
+    font-weight: 300; /* Daha ince bir ağırlık */
+    letter-spacing: 0.5px; /* Harf aralığı artırıldı */
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-light-muted {
+    color: var(--text-muted) !important;
+}
+
+.bg-dark-main {
+    background-color: var(--dark-main) !important;
+}
+
+.bg-dark-alt {
+    background-color: var(--dark-alt) !important;
+}
+
+
+
+.main-header .logo {
+    display: flex;
+    align-items: center;
+    /* Logoyu içeren kapsayıcının maksimum yüksekliğini artırdık */
+    height: 60px; /* Logo için daha fazla alan */
+}
+
+.navbar-logo {
+    /* Logonun kendisi için maksimum yükseklik ve genişlik belirledik */
+    max-height: 25vh; /* Kapsayıcının yüksekliğini aşmasın */
+    max-width: 100%;  /* Kapsayıcının genişliğini aşmasın */
+    height: auto;     /* En-boy oranını korur */
+    width: auto;      /* En-boy oranını korur */
+    
+    /* Eğer logonuzun orijinal boyutu küçükse, bu değerleri deneyebilirsiniz */
+    /* width: 150px;
+    height: auto; */
+}
+
+/* BIGLODGE yazı stiline artık ihtiyacımız yok, bu kısmı silebilirsiniz */
+/*
+.main-header .logo span {
+    font-weight: 700;
+}
+*/
+
+/* Header Stil */
+.main-header {
+    background-color: transparent;
+    transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    z-index: 1030;
+    box-shadow: none;
+}
+
+.main-header.scrolled {
+    background-color: var(--dark-alt);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main-header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    text-decoration: none;
+}
+.main-header .logo span {
+    font-weight: 700;
+}
+
+.main-header .nav-link {
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 0 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-header .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+.main-header .nav-link:hover::after {
+    width: 100%;
+}
+
+.main-header .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggler {
+    border: none;
+    background: transparent;
+}
+.menu-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28234, 234, 234, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Offcanvas Menü */
+.offcanvas {
+    background-color: var(--dark-alt) !important;
+}
+.offcanvas .nav-link {
+    color: var(--text-light);
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.offcanvas .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-container {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    z-index: 0;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: transform; /* Performans iyileştirmesi */
+}
+
+.layer-0 {
+    background-image: url('https://picsum.photos/id/1069/1920/1080?blur=3'); /* blur=5'ten blur=3'e düşürüldü */
+    filter: brightness(0.7); /* brightness(0.6)'dan brightness(0.7)'ye artırıldı */
+}
+.layer-1 {
+    background-image: url('https://picsum.photos/id/111/1920/1080');
+    filter: grayscale(60%) brightness(0.6); /* grayscale azaltıldı, brightness artırıldı */
+    transform: scale(1.05);
+}
+.layer-2 {
+    background-image: url('https://picsum.photos/id/160/1920/1080');
+    filter: grayscale(30%) brightness(0.5); /* grayscale azaltıldı, brightness artırıldı */
+    transform: scale(1.1);
+}
+
+
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(10,10,10,0.8) 100%); /* Gradyan koyuluğu azaltıldı */
+    z-index: 1;
+}
+
+.hero-section .container {
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-section .lead {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--text-muted);
+}
+
+.scroll-down-indicator {
+    z-index: 2;
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+/* Genel Buton Stilleri */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-main);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #72E651;
+    border-color: #72E651;
+    color: var(--dark-main);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(161, 255, 117, 0.2);
+}
+
+.btn-outline-light {
+    color: var(--text-light);
+    border-color: var(--text-light);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    color: var(--dark-main);
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(234, 234, 234, 0.1);
+}
+
+/* Animated Button (genel animasyonlar için) */
+.animated-button {
+    position: relative;
+    overflow: hidden;
+}
+.animated-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+.animated-button:hover::before {
+    width: 200%;
+    height: 200%;
+}
+.animated-button > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Servis Kartları */
+.service-card {
+    background-color: var(--dark-alt);
+    color: var(--text-light);
+    border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background-color: var(--dark-main);
+}
+
+.service-card i {
+    color: var(--primary-color);
+    font-size: 3rem !important;
+    margin-bottom: 1rem;
+}
+
+.service-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Portfolyo Öğeleri */
+.portfolio-item {
+    background-color: var(--dark-alt); /* Kart arka plan rengi */
+    border-radius: 12px; /* Kart köşelerini yuvarla */
+    overflow: hidden; /* Taşmayı engellemek için en önemlisi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Gölge efekti */
+    height: 100%; /* Eğer kartlar düzgün hizalanmıyorsa */
+    display: flex; /* İçeriğin düzeni için flexbox kullanabiliriz */
+    flex-direction: column; /* İçeriği dikey olarak hizala */
+}
+
+.portfolio-item .img-wrapper {
+    width: 100%;
+    height: 100px; /* Görseller için sabit bir yükseklik belirleyelim */
+    overflow: hidden; /* Görselin taşmasını engelle */
+    border-top-left-radius: 12px; /* Sadece üst köşeleri yuvarla */
+    border-top-right-radius: 12px;
+}
+
+.portfolio-item img {
+    width: 100%; /* Görselin sarmalayıcıya tam oturmasını sağlar */
+    height: 50%; /* Görselin sarmalayıcıya tam oturmasını sağlar */
+    object-fit: cover; /* En-boy oranını koruyarak sarmalayıcıyı doldurur */
+    display: block; /* Görselin altında oluşabilecek boşlukları engeller */
+}
+
+
+.portfolio-item:hover img {
+    transform: scale(1.08);
+}
+
+.portfolio-item .card-body {
+    padding: 1.5rem;
+}
+
+.portfolio-item .card-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-item .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-main);
+}
+
+
+/* Portfolyo Sayfasına Özel Hero Stili */
+.hero-section.portfolio-hero-section {
+    min-height: 100vh; /* Daha kompakt bir başlık alanı */
+    padding-top: 100px;
+}
+.hero-section.portfolio-hero-section h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Portfolyo başlığı daha küçük */
+}
+
+/* Portfolyo Parallax Görselleri */
+.portfolio-layer-0 {
+    background-image: url('https://picsum.photos/id/433/1920/1080?blur=3'); /* Farklı bir görsel, blur 3 */
+    filter: brightness(0.7); /* Parlaklık artırıldı */
+}
+.portfolio-layer-1 {
+    background-image: url('https://picsum.photos/id/409/1920/1080'); /* Farklı bir görsel */
+    filter: grayscale(60%) brightness(0.6); /* Ayarlar */
+    transform: scale(1.05);
+}
+.portfolio-layer-2 {
+    background-image: url('https://picsum.photos/id/426/1920/1080'); /* Farklı bir görsel */
+    filter: grayscale(30%) brightness(0.5); /* Ayarlar */
+    transform: scale(1.1);
+}
+
+/* Hero gradyanı, portfolyo sayfası için biraz daha şeffaf olabilir */
+.hero-section.portfolio-hero-section .hero-gradient-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(10,10,10,0.7) 100%); /* Biraz daha şeffaf gradyan */
+}
+
+/* Hakkımızda Bölümü Görsel */
+.about-img {
+    border: 5px solid var(--primary-color);
+    object-fit: cover;
+    height: 100%;
+    max-height: 500px;
+}
+/* About Bölümündeki Logo Görseli için Düzenleme */
+.about-logo-wrapper {
+    background-color: var(--dark-alt); /* Logoyu saran kutuya hafifçe daha açık bir arka plan */
+   /* padding: 20px; /* Logoyla kutu arasında boşluk bırakır */
+    border-radius: 12px; /* Köşeleri yuvarlar */
+    display: inline-block; /* İçeriğine göre genişler */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Hafif gölge */
+    transition: background-color 0.3s ease; /* Hover efekti için */
+}
+
+/* Eğer logoyu doğrudan .about-img olarak kullanıyorsanız, sadece bu kısım yeterli olabilir */
+.about-img {
+    border: 5px solid var(--primary-color);
+    object-fit: cover;
+    height: 100%;
+    max-height: 500px;
+    width: auto; /* Görselin orijinal en-boy oranını korur */
+    display: block; /* Blok elementi yapar */
+    margin: 0 auto; /* Ortalamak için */
+}
+
+/* Eğer logonun kendisi siyahsa ve koyu arka planda kayboluyorsa, bu kısım önemli */
+.about-logo-wrapper img {
+    /* VEYA daha basit bir çözüm: */
+     filter: drop-shadow(0 0 5px rgba(255,255,255,0.7));
+}
+
+/* Hover efekti eklemek isterseniz (isteğe bağlı) */
+.about-logo-wrapper:hover {
+    background-color: var(--dark-main); /* Hover'da eski rengine dönebilir */
+}
+/* Yeni Dikey Bloklar Bölümü Stili */
+.split-section {
+    min-height: 80vh; /* Minimum yükseklik korunsun */
+    overflow: hidden;
+    /* Dikey bloklar mobil veya küçük ekranlarda alt alta gelsin */
+    flex-direction: column;
+}
+
+.split-left {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    /* Mobil cihazlarda görselin daha iyi görünmesi için sabit bir yükseklik verelim */
+    min-height: 400px; /* Görselin yüksekliğini biraz azaltalım */
+}
+
+.split-right {
+    flex: 1;
+    padding: 2rem;
+    display: flex; /* İçeriği ortalamak için flexbox kullanalım */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
+    min-height: 50vh; /* Mobil cihazlarda metin bloğunun da yeterli yüksekliği olsun */
+}
+
+.split-image-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.split-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Görselin oranlarını koruyarak kapsayıcıyı doldurmasını sağlar */
+    object-position: center; /* Görselin merkezini odak noktası yapar */
+    filter: grayscale(80%) brightness(0.8);
+    transition: filter 0.5s ease;
+}
+
+.split-left:hover .split-image {
+    filter: grayscale(0%) brightness(1);
+}
+
+.split-right .lead {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Masaüstü görünümü için (992px ve üzeri) */
+@media (min-width: 992px) {
+    .split-section {
+        flex-direction: row; /* Masaüstünde yan yana gelsin */
+    }
+    .split-left {
+        min-height: 80vh; /* Daha büyük ekranlarda daha yüksek olsun */
+        min-width: 45%; /* Sol blokun genişliğini sabitleriz */
+        max-width: 55%; /* Sağ blokun esnekliğini sağlarız */
+    }
+    .split-right {
+        min-height: 80vh;
+        text-align: left; /* Metni sola hizala */
+        justify-content: flex-start; /* Yatayda sola yasla */
+        padding-left: 5rem; /* Sol taraftan daha fazla boşluk bırakalım */
+    }
+    .split-right .p-4 {
+        text-align: left; /* İç metni sola hizala */
+    }
+}
+
+/* Küçük tabletler ve büyük telefonlar için (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .split-left {
+        min-height: 500px; /* Tabletlerde görselin biraz daha büyük olmasını sağlayalım */
+    }
+}
+
+
+/*Contact area*/
+
+
+
+/* İletişim Bölümü Stilleri */
+.contact-item {
+    background-color: var(--dark-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-10px);
+    background-color: var(--dark-alt);
+}
+
+.contact-item h5 {
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.contact-item a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Footer Sosyal Medya İkonları */
+.social-icon-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon-link:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Responsive Düzenlemeler */
+@media (min-width: 992px) {
+    .split-section {
+        flex-direction: row;
+    }
+    .split-left, .split-right {
+        min-height: 80vh;
+    }
+}
+@media (max-width: 991.98px) {
+    .main-header .nav-link {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    .hero-section .lead {
+        font-size: 1.2rem;
+    }
+    .about-img {
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-header .logo {
+        font-size: 1.5rem;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+    .about-img {
+        max-height: 350px;
+    }
+}
+
+
+
+/* Modal İçindeki Slayt Gösterisi ve Görsel Düzenlemeleri */
+.carousel-inner {
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+    /* Sabit bir en-boy oranı belirleyelim, 4:3 gibi */
+    aspect-ratio: 4 / 3;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Görselin oranını bozmadan sığdırır */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Okların görünürlüğünü artırır */
+}
+
+
+
+
+
+/* Dil Seçim Butonları */
+.lang-btn {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.lang-btn:hover,
+.lang-btn.active-lang {
+    color: var(--text-light);
+}
